@@ -18,10 +18,32 @@ edit `MASTER`, translate the same edit into `MASTER_ZH`. It adds `xeCJK` with
 `ItalicFont` is deliberately mapped to the upright face, since synthetically
 slanted Chinese reads as broken.
 
-**Never** hand-edit a `.pdf`, and never generate a resume from the `.md` files.
-The `.md` files are research notes only — their resume bodies were deliberately
-removed because keeping the same content in two places caused repeated silent
-drift, where two pipelines wrote the same PDFs and whichever ran last won.
+**Never** hand-edit a `.pdf`. There is no second source: the
+`Joseph_Li_Resume_*.md` research-note files were removed from the working tree
+because keeping resume content in two places caused repeated silent drift,
+where two pipelines wrote the same PDFs and whichever ran last won.
+
+## Research notes live in git history
+
+The four `.md` files (per-track posting research, bullet-revision rationale,
+interview-prep detail behind each bullet, and the reviewer feedback that shaped
+them) are preserved at the `notes-archive` tag. To read one:
+
+```bash
+git show notes-archive:Joseph_Li_Resume_MASTER.md | less
+git show notes-archive:Joseph_Li_Resume_BigTech.md
+git show notes-archive:Joseph_Li_Resume_AIAgentStartup.md
+git show notes-archive:Joseph_Li_Resume_FDE.md
+```
+
+To restore one temporarily for reference (delete it again before committing):
+
+```bash
+git checkout notes-archive -- Joseph_Li_Resume_MASTER.md
+```
+
+Do not recreate `.md` copies of resume content. New research or interview
+notes go in `notes/` as plain text, never as a parallel copy of a `.tex` body.
 
 Shared formatting lives in `resume.sty`. Change it there once rather than in
 each `.tex`.
