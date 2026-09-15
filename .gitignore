@@ -1,0 +1,18 @@
+# LaTeX build intermediates (build_resume.py deletes these, but ignore anyway)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS / editor junk
+.DS_Store
+.Rhistory
+
+# Stray unnamed export that landed in this folder
+/ .pdf

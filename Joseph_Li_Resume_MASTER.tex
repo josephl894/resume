@@ -1,0 +1,52 @@
+% Joseph Li -- MASTER resume.
+% Edit this file directly, then run:  python3 build_resume.py MASTER
+\documentclass[10pt]{article}
+\usepackage{resume}
+
+\begin{document}
+
+\resumeheader{Joseph Li}{%
+Mountain View, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://linkedin.com/in/josephl894}{linkedin.com/in/josephl894} | \href{https://github.com/josephl894}{github.com/josephl894} | TN Status Eligible}
+
+\section{Education}
+\entry{University of Southern California}{}{Los Angeles, CA}{M.S. Computer Science (Artificial Intelligence) | GPA: 3.50/4.00}{Sep 2024 -- May 2026}
+\note{Relevant Coursework: Machine Learning, Natural Language Processing, Analysis of Algorithms, Database Systems}
+
+\entry{University of Michigan, Ann Arbor}{}{Ann Arbor, MI}{B.S.E. Data Science | GPA: 3.68/4.00}{Sep 2020 -- May 2024}
+
+\section{Professional Experience}
+\entry{Cortex AI}{AI coding workspace and model routing platform}{Mountain View, CA}{AI Engineer Intern}{Jun 2026 -- Aug 2026}
+\begin{bullets}
+  \item Built a public token-exchange API that authenticates and meters per-customer spend on third-party models for a 2,000-seat enterprise customer
+  \item Built a Harbor-based evaluation harness run nightly in CI against 150+ document and spreadsheet tasks graded by an independent verifier, isolating unbounded tool-retry loops as the dominant failure class and gating merges on pass rate
+  \item Designed a server-side Langfuse ingest proxy (TypeScript) normalizing model IDs across 9 upstream providers and reconciling per-run token cost against the billing ledger
+  \item Cut per-request token cost 15\% on identical tasks by eliminating redundant tool calls and tightening context-window management
+\end{bullets}
+
+\entry{Yoyo Markets Inc.}{AI-native prediction markets startup}{New York, NY (Remote)}{AI Engineer (Part-time)}{Aug 2025 -- Dec 2025}
+\begin{bullets}
+  \item Led a 3-person team building the market generation pipeline that turns real-time social media signals into bettable prediction markets, publishing 50+ per week versus hand-curation (5x)
+  \item Designed a multi-agent ELO ranking system scoring 200+ candidate markets per cycle, ranking them against each other rather than on an absolute scale, lifting published market quality 30\%
+  \item Built an async Python service polling 150+ high-signal social accounts concurrently, expanding the signal pool 3x beyond public trend aggregators
+  \item Shipped a Next.js/Vercel dashboard the founding team used daily to review and publish markets, cutting turnaround from 30 minutes to under 5
+\end{bullets}
+
+\section{Research and Projects}
+\entry{Weenix (A Unix-Like OS Kernel)}{}{USC}{C, x86, QEMU}{Fall 2025}
+\begin{bullets}
+  \item Implemented processes, kernel threads, a round-robin scheduler, context switching, and kernel mutexes
+  \item Built the virtual file system and virtual memory layers: demand paging, mmap, page-fault handling, and copy-on-write fork
+\end{bullets}
+
+\entry{University of Michigan, SOCR Lab}{}{Ann Arbor, MI}{Privacy-Preserving Clinical Text Obfuscation}{2023 -- 2024}
+\begin{bullets}
+  \item Built an NLP obfuscation pipeline using named entity recognition and differential privacy to de-identify 10,000+ clinical patient records for research use without exposing patient identity
+  \item Benchmarked 3 pipeline variants, reaching 94\% entity-redaction accuracy while keeping downstream task performance within 3\% of the unmasked baseline
+\end{bullets}
+
+\section{Technical Skills}
+\skill{Languages}{Python, TypeScript, JavaScript, C, C++, SQL}
+\skill{Frameworks \& Infrastructure}{React, Next.js, Docker, PostgreSQL, Git}
+\skill{AI \& ML}{PyTorch, NLP, LLM Evaluation, Harbor, LLM-as-judge, Multi-Agent Systems, Langfuse}
+
+\end{document}
