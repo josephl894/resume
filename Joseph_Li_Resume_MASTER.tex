@@ -18,17 +18,18 @@ Mountain View, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijosep
 \entry{Cortex AI}{AI coding workspace and model routing platform}{Mountain View, CA}{AI Engineer Intern}{Jun 2026 -- Aug 2026}
 \begin{bullets}
   \item Built a public token-exchange API that authenticates and meters per-customer spend on third-party models for a 2,000-seat enterprise customer
-  \item Built a Harbor-based evaluation harness run nightly in CI against 150+ document and spreadsheet tasks graded by an independent verifier, isolating unbounded tool-retry loops as the dominant failure class and gating merges on pass rate
-  \item Designed a server-side Langfuse ingest proxy (TypeScript) normalizing model IDs across 9 upstream providers and reconciling per-run token cost against the billing ledger
+  \item Authored 150+ Harbor-style agentic task packages, each pairing a prompt with a synthetically seeded workspace fixture, clean-state reset, tool and time budgets, and forbidden-tool constraints, run nightly in CI as a merge gate on pass rate
+  \item Designed the grading stack: per-task verifier scripts emitting binary reward on the artifact, an LLM-judge rubric penalizing excess tool calls, and a 22-mode failure taxonomy that isolated unbounded retry loops as the dominant class
+  \item Designed a server-side Langfuse ingest proxy (TypeScript) capturing full tool-call trajectories per run, normalizing model IDs across 9 upstream providers and reconciling per-run token cost against the billing ledger
   \item Cut per-request token cost 15\% on identical tasks by eliminating redundant tool calls and tightening context-window management
 \end{bullets}
 
 \entry{Yoyo Markets Inc.}{AI-native prediction markets startup}{New York, NY (Remote)}{AI Engineer (Part-time)}{Aug 2025 -- Dec 2025}
 \begin{bullets}
-  \item Led a 3-person team building the market generation pipeline that turns real-time social media signals into bettable prediction markets, publishing 50+ per week versus hand-curation (5x)
-  \item Designed a multi-agent ELO ranking system scoring 200+ candidate markets per cycle, ranking them against each other rather than on an absolute scale, lifting published market quality 30\%
-  \item Built an async Python service polling 150+ high-signal social accounts concurrently, expanding the signal pool 3x beyond public trend aggregators
-  \item Shipped a Next.js/Vercel dashboard the founding team used daily to review and publish markets, cutting turnaround from 30 minutes to under 5
+  \item Led a 3-person team building a generation pipeline that turns real-time social signals into candidate prediction markets, producing 50+ published markets per week versus hand-curation (5x)
+  \item Designed a multi-agent pairwise-preference ranker (ELO over 200+ candidates per cycle) as the quality gate, choosing pairwise LLM judgments over absolute scores for calibration, lifting published market quality 30\%
+  \item Built an async Python collection service polling 150+ high-signal social accounts concurrently, expanding the signal pool 3x beyond public trend aggregators
+  \item Shipped a Next.js/Vercel human-in-the-loop review dashboard the founding team used daily to approve generated markets, cutting turnaround from 30 minutes to under 5
 \end{bullets}
 
 \section{Research and Projects}
@@ -47,6 +48,6 @@ Mountain View, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijosep
 \section{Technical Skills}
 \skill{Languages}{Python, TypeScript, JavaScript, C, C++, SQL}
 \skill{Frameworks \& Infrastructure}{React, Next.js, Docker, PostgreSQL, Git}
-\skill{AI \& ML}{PyTorch, NLP, LLM Evaluation, Harbor, LLM-as-judge, Multi-Agent Systems, Langfuse}
+\skill{AI \& ML}{PyTorch, NLP, Agentic Evals (Harbor), Verifier \& Reward Design, LLM-as-judge, Synthetic Data Pipelines, Multi-Agent Systems, Langfuse}
 
 \end{document}

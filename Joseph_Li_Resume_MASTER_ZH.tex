@@ -33,17 +33,18 @@
 \entry{Cortex AI}{AI 编程工作空间与模型路由平台}{美国加州山景城}{AI 工程师实习生}{2026 年 6 月 -- 2026 年 8 月}
 \begin{bullets}
   \item 构建对外开放的 token 交换 API，为一家 2,000 人规模的企业客户对第三方模型消费进行鉴权与计量
-  \item 基于 Harbor 框架搭建评测体系，在 CI 中每晚针对 150+ 项文档与表格任务运行并由独立验证器评分，定位出无界工具重试循环为主要失败类别，并以通过率作为合并门禁
-  \item 设计服务端 Langfuse 数据接入代理（TypeScript），统一 9 家上游模型供应商的模型 ID，并将每次运行的 token 成本与计费账本对账
+  \item 编写 150+ 个 Harbor 风格的 Agent 任务包，每个任务包含提示词、由合成数据种子化的工作区固件、干净状态重置、工具与时间预算及禁用工具约束，在 CI 中每晚运行并以通过率作为合并门禁
+  \item 设计评分体系：基于输出产物输出二元 reward 的逐任务验证脚本、惩罚冗余工具调用的 LLM 评审规则，以及 22 类失败模式分类法，定位出无界重试循环为主要失败类别
+  \item 设计服务端 Langfuse 数据接入代理（TypeScript），完整记录每次运行的工具调用轨迹，统一 9 家上游模型供应商的模型 ID，并将每次运行的 token 成本与计费账本对账
   \item 通过消除冗余工具调用并收紧上下文窗口管理，在相同任务上将单次请求的 token 成本降低 15\%
 \end{bullets}
 
 \entry{Yoyo Markets Inc.}{AI 原生预测市场初创公司}{美国纽约（远程）}{AI 工程师（兼职）}{2025 年 8 月 -- 2025 年 12 月}
 \begin{bullets}
-  \item 带领 3 人团队搭建市场生成管线，将实时社交媒体信号转化为可下注的预测市场，每周上线 50+ 个，相比人工筛选提升 5 倍
-  \item 设计多 Agent ELO 排序系统，每轮对 200+ 个候选市场评分，采用两两相互比较而非绝对打分，使上线市场质量提升 30\%
-  \item 开发异步 Python 服务，并发抓取 150+ 个高信号社交账号，信号覆盖范围较公开趋势聚合器扩大 3 倍
-  \item 交付基于 Next.js/Vercel 的内部看板，供创始团队每日审核与发布市场，将流程耗时由 30 分钟缩短至 5 分钟以内
+  \item 带领 3 人团队搭建生成管线，将实时社交信号转化为候选预测市场，每周产出 50+ 个上线市场，相比人工筛选提升 5 倍
+  \item 设计多 Agent 两两偏好排序器（每轮对 200+ 个候选进行 ELO 排序）作为质量门禁，以两两比较取代绝对打分以提升校准度，使上线市场质量提升 30\%
+  \item 开发异步 Python 采集服务，并发抓取 150+ 个高信号社交账号，信号覆盖范围较公开趋势聚合器扩大 3 倍
+  \item 交付基于 Next.js/Vercel 的人工审核看板，供创始团队每日审批生成的市场，将流程耗时由 30 分钟缩短至 5 分钟以内
 \end{bullets}
 
 \section{研究与项目}
@@ -62,6 +63,6 @@
 \section{技术技能}
 \skill{编程语言}{Python, TypeScript, JavaScript, C, C++, SQL}
 \skill{框架与基础设施}{React, Next.js, Docker, PostgreSQL, Git}
-\skill{AI 与机器学习}{PyTorch、NLP、LLM 评测、Harbor、LLM-as-judge、多 Agent 系统、Langfuse}
+\skill{AI 与机器学习}{PyTorch、NLP、Agent 评测（Harbor）、验证器与 Reward 设计、LLM-as-judge、合成数据管线、多 Agent 系统、Langfuse}
 
 \end{document}
