@@ -6,6 +6,8 @@
 %     from their employer. \hfill keeps the text stream in reading order.
 %   * Ligatures are disabled, so "fi"/"fl" extract as real characters instead
 %     of a single glyph that becomes a blank in parsed text.
+%   * Kerning is disabled. Arial's tight "To"/"Te" pairs make pypdf-style
+%     extractors insert a space, so "PyTorch" parsed as "PyT orch".
 \ProvidesPackage{resume}
 
 \usepackage[letterpaper, top=0.5in, bottom=0.42in, left=0.5in, right=0.5in]{geometry}
@@ -19,7 +21,7 @@
 % Kill f-ligatures for EVERY face (regular/bold/italic) before any font loads.
 % Otherwise "Artificial" and "file" render as a single fi glyph that extracts
 % as U+FB01 instead of two letters.
-\defaultfontfeatures{Ligatures=NoCommon}
+\defaultfontfeatures{Ligatures=NoCommon, Kerning=Off}
 
 % Arial, NOT Helvetica -- deliberate, do not "fix" this.
 % macOS Helvetica.ttc carries its ligature table in Apple's AAT `morx` format,
