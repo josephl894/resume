@@ -1,0 +1,119 @@
+% Master resume. Keep every project. Tailored versions drop projects, they do not rewrite these bullets.
+\documentclass[10pt]{article}
+\usepackage{resume}
+\usepackage{needspace}
+
+\geometry{top=0.5in, bottom=0.45in, left=0.5in, right=0.5in}
+\setmainfont{Carlito}[
+  Ligatures=NoCommon,
+  BoldFont=Carlito-Bold,
+  ItalicFont=Carlito-Italic,
+  BoldItalicFont=Carlito-BoldItalic
+]
+\AtBeginDocument{\fontsize{10.5}{13.5}\selectfont}
+
+\titleformat{\section}[block]
+  {\normalfont\fontsize{10.5}{12}\selectfont\bfseries}
+  {}{0em}{\MakeUppercase}[\vspace{-6.5pt}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{8pt}{-1.5pt}
+
+\renewcommand{\resumeheader}[2]{%
+  {\centering\fontsize{16}{18}\selectfont\bfseries #1\par}%
+  \vspace{4pt}%
+  {\centering\fontsize{10.5}{13}\selectfont #2\par}%
+  \vspace{6pt}%
+}
+\renewcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{1.5pt}}
+\renewcommand{\note}[1]{#1\par}
+% Job: uppercase org and location, bold-italic role and dates.
+\newcommand{\job}[4]{%
+  \vspace{0pt}%
+  \textbf{\MakeUppercase{#1}}\hfill\textbf{#2}\par
+  \vspace{0.5pt}%
+  \textbf{\textit{#3}}\hfill\textbf{\textit{#4}}\par
+}
+% School: uppercase name and city, italic degree and dates.
+\newcommand{\school}[4]{%
+  \vspace{2pt}%
+  \textbf{\MakeUppercase{#1}}\hfill\textbf{#2}\par
+  \vspace{0.5pt}%
+  \textit{#3}\hfill\textit{#4}\par
+}
+% Project: uppercase title, skills, then place and date on the same line.
+\newcommand{\proj}[4]{%
+  \vspace{3pt}%
+  \textbf{\MakeUppercase{#1} | }\textit{#2}\hfill
+  \textbf{#4}%
+  \notblank{#3}{\ \textbf{| #3}}{}%
+  \par
+}
+
+\begin{document}
+
+\resumeheader{Joseph Li}{%
+Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://www.linkedin.com/in/lijoseph894/}{\underline{LinkedIn}} | \href{https://github.com/josephl894}{\underline{GitHub}}}
+
+\section{Skills}
+\skill{Languages \& Databases}{Python, Go, C, C++, CUDA, TypeScript, JavaScript, SQL, PostgreSQL, Redis}
+\skill{Infrastructure \& Development}{Linux, Docker, Kubernetes, Git, GitHub Actions, QEMU, AWS Bedrock, Next.js, React, Vercel}
+\skill{Systems \& AI}{API Gateways, CI/CD, Regression Testing, Observability, Asynchronous Programming, Operating Systems, Virtual Memory, Langfuse, LLM Evaluation, PyTorch, vLLM, Roofline Analysis, TensorFlow, LoRA, scikit-learn, NumPy, Pandas}
+
+\section{Professional Experience}
+\job{Cortex AI}{Menlo Park, CA}{AI Engineer Intern}{Jun. 2026 - Aug. 2026}
+\begin{bullets}
+  \item Designed and launched an LLM API gateway in \textbf{Go}, \textbf{PostgreSQL}, and \textbf{Redis} that routes OpenAI, Anthropic, and \textbf{AWS Bedrock} through one endpoint for a 2,000-seat customer and meters \$10K in monthly model spend
+  \item Built a pre-release test suite with \textbf{GitHub Actions}, expanding coverage from 5 smoke tests to 159 tasks so tool regressions were caught before release
+  \item Established live monitoring in \textbf{Langfuse}, adopted by all 9 engineers, tracking per-session latency and failures and routing each failure to the engineer responsible
+  \item Reduced wasted model spend by stopping runaway agent loops and using an \textbf{LLM judge} to flag unnecessary tool calls
+\end{bullets}
+
+\vspace{3pt}
+\job{Yoyo Markets Inc.}{New York, NY (Remote)}{AI Engineer}{Aug. 2025 - Dec. 2025}
+\begin{bullets}
+  \item Automated manual research and editorial work with a \textbf{Python} and LLM generation pipeline, producing \textbf{50+ markets per week at 5x the hand-curated rate}
+  \item Developed an \textbf{asynchronous Python} scraper tracking 150+ high-signal Twitter accounts in real time, feeding that pipeline \textbf{3x the signal volume} of public trend aggregators
+  \item Devised a ranking step that uses pairwise LLM comparisons and Elo ratings to screen 200+ candidate markets per cycle and send the strongest to founder review
+  \item Shipped a \textbf{Next.js} review dashboard on \textbf{Vercel} that founders use daily, cutting \textbf{publishing turnaround from 30 minutes to under 5 minutes}
+\end{bullets}
+
+\section{Research and Projects}
+\vspace{-3pt}
+\proj{Efficient LLMs}{PyTorch, CUDA, LoRA}{USC}{Jan. 2026 - May 2026}
+\begin{bullets}
+  \item Converted \textbf{Llama 3.2-1B} into a \textbf{Mixture-of-Experts} model with \textbf{LoRA} adapters and kept held-out quality level with the original, perplexity \textbf{9.60 versus 9.66}
+  \item Quantized weights from \textbf{FP16} to \textbf{INT4}, cutting model size \textbf{61\%} while keeping generated answers coherent
+\end{bullets}
+
+\proj{Power Grid Dispatch Model}{Python}{USC}{Jan. 2026 - May 2026}
+\begin{bullets}
+  \item Engineered a \textbf{learning-to-optimize} pipeline for New York's grid, where a model learns generation costs from public load, price, and outage data and an optimizer sets the hourly plan
+  \item Cut the extra cost above the cheapest possible hourly plan \textbf{by 47\%} versus the old schedule by adding transmission limits and a reserve margin
+\end{bullets}
+
+\proj{Math Reasoning Fine-Tune}{Python, LoRA}{USC}{Aug. 2025 - Dec. 2025}
+\begin{bullets}
+  \item Trained \textbf{Qwen2.5-1.5B} with \textbf{LoRA} on 1,000 grade-school math problems to write its reasoning before the answer
+  \item Rebuilt the grader until a correct final answer \textbf{scored consistently}, then implemented a \textbf{GRPO} trainer that rewards a correct, clearly reasoned solution among 4 candidates
+\end{bullets}
+
+\Needspace{6\baselineskip}
+\proj{Weenix (A Unix-Like OS Kernel)}{C, x86, QEMU}{USC}{Aug. 2025 - Dec. 2025}
+\begin{bullets}
+  \item Constructed a Unix-like kernel in \textbf{C}, with process scheduling, a file system, and virtual memory
+  \item Integrated the three parts in \textbf{QEMU} so processes could be scheduled, files created and removed, and a copied process shared memory until one side wrote to it
+\end{bullets}
+
+\proj{PostgreSQL Buffer Manager}{C, PostgreSQL}{USC}{Jan. 2025 - May 2025}
+\begin{bullets}
+  \item Replaced \textbf{PostgreSQL}'s default memory rule with a first-in, first-out rule that discards the oldest unused data
+  \item Benchmarked its performance against PostgreSQL's default implementation and found the simpler rule \textbf{matched its speed} at 1MB of memory
+\end{bullets}
+
+\section{Education}
+\vspace{-2pt}
+\school{University of Southern California}{Los Angeles, CA}{M.S. Computer Science | GPA: 3.6/4.0}{Sep. 2024 - May 2026}
+\note{Relevant Coursework: ML Accelerators, Operating Systems}
+
+\school{University of Michigan, Ann Arbor}{Ann Arbor, MI}{B.S.E. Data Science | GPA: 3.7/4.0}{Sep. 2020 - May 2024}
+
+\end{document}

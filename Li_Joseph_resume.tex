@@ -1,0 +1,58 @@
+% Master resume. Keep every project. Tailored versions drop projects, they do not rewrite these bullets.
+\documentclass[10pt]{article}
+\usepackage{resume}
+\usepackage{needspace}
+
+\geometry{top=0.55in, bottom=0.5in, left=0.6in, right=0.6in}
+\linespread{1.12}
+\titleformat{\section}
+  {\normalfont\fontsize{10.4}{12.5}\bfseries\MakeUppercase}
+  {}{0em}{}[{\vspace{-7pt}\rule{\linewidth}{0.8pt}}]
+\renewcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{1.5pt}}
+
+\begin{document}
+
+\resumeheader{Joseph Li}{%
+Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://www.linkedin.com/in/lijoseph894/}{linkedin.com/in/lijoseph894} | \href{https://github.com/josephl894}{github.com/josephl894}}
+
+\section{Skills}
+\skill{Languages \& Databases}{Go, C, C++, SQL, Python, TypeScript, JavaScript, PostgreSQL, Redis}
+\skill{Infrastructure}{Linux, Docker, Kubernetes, Git, GitHub Actions, QEMU, AWS Bedrock}
+\skill{Systems}{Observability, Latency, API Gateways, CI/CD, Regression Testing, Asynchronous Programming, Operating Systems, Virtual Memory}
+
+\section{Professional Experience}
+\entry{Cortex AI}{}{Menlo Park, CA}{AI Engineer Intern}{Jun 2026 -- Aug 2026}
+\begin{bullets}
+  \item Designed and launched an LLM API gateway in \textbf{Go}, \textbf{PostgreSQL}, and \textbf{Redis} for a 2,000-seat enterprise customer, unified OpenAI, Anthropic, and \textbf{AWS Bedrock} behind one endpoint and metered \$10K in monthly model spend
+  \item Built a pre-release agent evaluation platform with \textbf{Langfuse} and \textbf{GitHub Actions}, expanding coverage from 5 smoke tests to 159 tasks and catching tool regressions before they reached users
+  \item Established production observability in \textbf{Langfuse}, adopted by all 9 engineers, tracked per-session latency, cost, and failures, with alerts routed to the engineer responsible for each failure
+  \item Reduced wasted model spend by stopping runaway agent loops and using an \textbf{LLM judge} to flag unnecessary tool calls
+\end{bullets}
+
+\entry{Yoyo Markets Inc.}{}{New York, NY (Remote)}{AI Engineer}{Aug 2025 -- Dec 2025}
+\begin{bullets}
+  \item Led a 3-person team to ship a \textbf{Python} and LLM market-generation pipeline, replacing manual research and editorial work, published \textbf{50+ markets per week at 5x the hand-curated rate}
+  \item Developed an \textbf{asynchronous Python} scraper tracking 150+ high-signal Twitter accounts in real-time, delivering \textbf{3x the signal volume} of public trend aggregators
+  \item Implemented a ranking system using pairwise LLM comparisons and Elo ratings to screen 200+ candidate markets per cycle and prioritize candidates for founder review
+  \item Shipped a \textbf{Next.js} review dashboard on \textbf{Vercel}, used daily by founders to approve and publish markets, reduced \textbf{publishing turnaround from 30 minutes to under 5 minutes}
+\end{bullets}
+
+\section{Projects}
+\entry{Weenix (A Unix-Like OS Kernel)}{}{USC}{C, x86, QEMU}{Aug 2025 -- Dec 2025}
+\begin{bullets}
+  \item Implemented a round-robin scheduler and kernel mutexes, a virtual file system, and copy-on-write demand paging in \textbf{C}
+\end{bullets}
+
+\entry{PostgreSQL Buffer Manager}{}{USC}{C, PostgreSQL 16.4}{Jan 2025 -- May 2025}
+\begin{bullets}
+  \item Implemented a \textbf{FIFO} policy in \textbf{PostgreSQL 16.4}'s \textbf{freelist.c} that returns the next buffer in pool order once its pin count hits zero
+  \item Benchmarked its performance against clock sweep at \textbf{1MB, 512KB, and 256KB} shared buffers, where \textbf{FIFO fell further behind as the pool shrank}
+\end{bullets}
+
+\section{Education}
+\entry{University of Southern California}{}{Los Angeles, CA}{M.S. Computer Science | GPA: 3.6/4.0}{Sep 2024 -- May 2026}
+\note{Relevant Coursework: Operating Systems, Database Systems, Analysis of Algorithms}
+
+\entry{University of Michigan, Ann Arbor}{}{Ann Arbor, MI}{B.S.E. Data Science | GPA: 3.7/4.0}{Sep 2020 -- May 2024}
+
+\end{document}

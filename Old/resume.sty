@@ -1,0 +1,92 @@
+% Shared resume style. Edit the four Joseph_Li_Resume_<VERSION>.tex files, not this.
+%
+% ATS notes (why this file looks the way it does):
+%   * Two-column rows use \hfill inside a normal paragraph, NOT tabular.
+%     Parsers read tabular cells out of document order, which detaches dates
+%     from their employer. \hfill keeps the text stream in reading order.
+%   * Ligatures are disabled, so "fi"/"fl" extract as real characters instead
+%     of a single glyph that becomes a blank in parsed text.
+%   * Kerning is disabled. Arial's tight "To"/"Te" pairs make pypdf-style
+%     extractors insert a space, so "PyTorch" parsed as "PyT orch".
+\ProvidesPackage{resume}
+
+\usepackage[letterpaper, top=0.5in, bottom=0.42in, left=0.5in, right=0.5in]{geometry}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+\usepackage[hidelinks]{hyperref}
+
+% Kill f-ligatures for EVERY face (regular/bold/italic) before any font loads.
+% Otherwise "Artificial" and "file" render as a single fi glyph that extracts
+% as U+FB01 instead of two letters.
+\defaultfontfeatures{Ligatures=NoCommon, Kerning=Off}
+
+% Arial, NOT Helvetica -- deliberate, do not "fix" this.
+% macOS Helvetica.ttc carries its ligature table in Apple's AAT `morx` format,
+% which XeTeX applies and fontspec's OpenType switches cannot disable: every
+% variant of Ligatures=NoCommon / RawFeature={-liga} / Renderer=OpenType was
+% tested and all still emitted U+FB01. Arial honours -liga and extracts as
+% clean ASCII. Arial is metrically compatible with Helvetica, so line breaks
+% and spacing are unchanged.
+\IfFontExistsTF{Arial}
+  {\setmainfont{Arial}}
+  {\setmainfont{Helvetica}}
+
+\definecolor{ink}{HTML}{111111}
+\definecolor{subtle}{HTML}{222222}
+\definecolor{descgray}{HTML}{333333}
+\color{ink}
+
+% Without this, TeX treats the period in "M.S." / "B.S.E." / "U.S." as the end
+% of a sentence and inserts a wider space after it.
+\frenchspacing
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+
+% ---------------------------------------------------------------- section rule
+\titleformat{\section}
+  {\normalfont\fontsize{10.4}{12.5}\bfseries\addfontfeature{LetterSpace=4.0}\MakeUppercase}
+  {}{0em}{}[{\vspace{-7pt}\rule{\linewidth}{0.8pt}}]
+\titlespacing*{\section}{0pt}{4pt}{2.5pt}
+
+% ------------------------------------------------------------------- header
+% \resumeheader{Name}{contact line}
+\newcommand{\resumeheader}[2]{%
+  {\centering\fontsize{17}{19}\selectfont\bfseries\addfontfeature{LetterSpace=1.2}#1\par}%
+  \vspace{2pt}%
+  {\centering\fontsize{8.6}{10.4}\selectfont\color{subtle}#2\par}%
+  \vspace{7pt}%
+}
+
+% \summary{text}
+\newcommand{\summary}[1]{{\fontsize{9.8}{11.8}\selectfont #1\par}\vspace{6pt}}
+
+% ------------------------------------------------------------------- entries
+% \entry{Org}{descriptor or empty}{Location}{Role or degree}{Dates}
+\newcommand{\entry}[5]{%
+  \vspace{3pt}%
+  \textbf{#1}%
+  \notblank{#2}{\,\textcolor{descgray}{\fontsize{9}{11}\selectfont\itshape---\,#2}}{}%
+  \hfill\textbf{#3}\par
+  \notblank{#4#5}{\vspace{1pt}\textit{#4}\hfill\textit{#5}\par}{}%
+}
+
+% a plain line under an entry (e.g. Relevant Coursework)
+\newcommand{\note}[1]{{\fontsize{9.3}{11.2}\selectfont #1\par}}
+
+% ------------------------------------------------------------------- bullets
+\newlist{bullets}{itemize}{1}
+\setlist[bullets]{
+  leftmargin=14pt, labelsep=5pt, label=\textbullet,
+  topsep=1pt, itemsep=1pt, parsep=0pt, partopsep=0pt,
+  before=\vspace{1pt}, after=\vspace{0pt}
+}
+
+% ------------------------------------------------------------------- skills
+% \skill{Label}{items}
+\newcommand{\skill}[2]{{\fontsize{8}{9}\selectfont\textbf{#1:} #2\par}\vspace{1.5pt}}
