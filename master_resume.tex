@@ -21,14 +21,14 @@
   {\centering\fontsize{16}{18}\selectfont\bfseries #1\par}%
   \vspace{4pt}%
   {\centering\fontsize{10.5}{13}\selectfont #2\par}%
-  \vspace{6pt}%
+  \vspace{-4pt}%
 }
 \renewcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{1.5pt}}
 \renewcommand{\note}[1]{#1\par}
-% Job: uppercase org and location, bold-italic role and dates.
-\newcommand{\job}[4]{%
+% Job: uppercase org, smaller italic description, location. Bold-italic role and dates.
+\newcommand{\job}[5]{%
   \vspace{0pt}%
-  \textbf{\MakeUppercase{#1}}\hfill\textbf{#2}\par
+  \textbf{\MakeUppercase{#1}}{\,\fontsize{9}{11}\selectfont\itshape---\,#5}\hfill\textbf{#2}\par
   \vspace{0.5pt}%
   \textbf{\textit{#3}}\hfill\textbf{\textit{#4}}\par
 }
@@ -51,15 +51,14 @@
 \begin{document}
 
 \resumeheader{Joseph Li}{%
-Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://www.linkedin.com/in/lijoseph894/}{\underline{LinkedIn}} | \href{https://github.com/josephl894}{\underline{GitHub}}}
-
+Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://www.linkedin.com/in/lijoseph894/}{\underline{LinkedIn}} | \href{https://josephl894.github.io/}{\underline{GitHub}}}
 \section{Skills}
 \skill{Languages \& Databases}{Python, Go, C, C++, CUDA, TypeScript, JavaScript, SQL, PostgreSQL, Redis}
 \skill{Infrastructure \& Development}{Linux, Docker, Kubernetes, Git, GitHub Actions, QEMU, AWS Bedrock, Next.js, React, Vercel}
 \skill{Systems \& AI}{API Gateways, CI/CD, Regression Testing, Observability, Asynchronous Programming, Operating Systems, Virtual Memory, Langfuse, LLM Evaluation, PyTorch, vLLM, Roofline Analysis, TensorFlow, LoRA, scikit-learn, NumPy, Pandas}
 
 \section{Professional Experience}
-\job{Cortex AI}{Menlo Park, CA}{AI Engineer Intern}{Jun. 2026 - Aug. 2026}
+\job{Cortex AI}{Menlo Park, CA}{Software Engineer Intern}{Jun. 2026 - Aug. 2026}{workspace copilot}
 \begin{bullets}
   \item Designed and launched an LLM API gateway in \textbf{Go}, \textbf{PostgreSQL}, and \textbf{Redis} that routes OpenAI, Anthropic, and \textbf{AWS Bedrock} through one endpoint for a 2,000-seat customer and meters \$10K in monthly model spend
   \item Built a pre-release test suite with \textbf{GitHub Actions}, expanding coverage from 5 smoke tests to 159 tasks so tool regressions were caught before release
@@ -68,7 +67,7 @@ Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894
 \end{bullets}
 
 \vspace{3pt}
-\job{Yoyo Markets Inc.}{New York, NY (Remote)}{AI Engineer}{Aug. 2025 - Dec. 2025}
+\job{Yoyo Markets}{New York, NY (Remote)}{Software Engineer}{Aug. 2025 - Dec. 2025}{prediction markets platform}
 \begin{bullets}
   \item Automated manual research and editorial work with a \textbf{Python} and LLM generation pipeline, producing \textbf{50+ markets per week at 5x the hand-curated rate}
   \item Developed an \textbf{asynchronous Python} scraper tracking 150+ high-signal Twitter accounts in real time, feeding that pipeline \textbf{3x the signal volume} of public trend aggregators
