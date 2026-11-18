@@ -61,10 +61,10 @@ Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894
 \section{Professional Experience}
 \job{Cortex AI --- Agentic Productivity OS Startup}{Menlo Park, CA}{Software Engineer Intern}{Jun. 2026 - Aug. 2026}
 \begin{bullets}
-  \item Designed and launched an LLM API gateway in \textbf{Go}, \textbf{PostgreSQL}, and \textbf{Redis} that routes OpenAI, Anthropic, and \textbf{AWS Bedrock} through one endpoint for a 2,000-seat customer and meters \$10K in monthly model spend
-  \item Built a pre-release test suite with \textbf{GitHub Actions}, expanding coverage from 5 smoke tests to 159 tasks so tool regressions were caught before release
-  \item Established live monitoring in \textbf{Langfuse}, adopted by all 9 engineers, tracking per-session latency and failures and routing each failure to the engineer responsible
-  \item Reduced wasted model spend by stopping runaway agent loops and using an \textbf{LLM judge} to flag unnecessary tool calls
+  \item Engineered a \textbf{30-task agent-eval suite} that blocked releases and drove a \textbf{20\% faster execution speed}, raised task completion from \textbf{70\% to 100\%}, and cut average token use \textbf{15\%}
+  \item Established a \textbf{single debugging view} that showed engineers exactly what an agent did on each task, cutting the time spent searching logs and fixing failures \textbf{3×}
+  \item Launched a \textbf{new-user onboarding} experience that lifted \textbf{Day-1 retention from 33\% to 54\%} by walking people through the core tasks and model choices
+  \item Built a \textbf{skills library} that let users save and reuse the workflows they repeated, removing the need to rebuild the same steps on every task
 \end{bullets}
 
 \vspace{3pt}
@@ -103,6 +103,7 @@ Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894
   \item Integrated the three parts in \textbf{QEMU} so processes could be scheduled, files created and removed, and a copied process shared memory until one side wrote to it
 \end{bullets}
 
+\Needspace{6\baselineskip}
 \proj{PostgreSQL Buffer Manager}{C, PostgreSQL}{USC}{Jan. 2025 - May 2025}
 \begin{bullets}
   \item Replaced \textbf{PostgreSQL}'s default memory rule with a first-in, first-out rule that discards the oldest unused data
