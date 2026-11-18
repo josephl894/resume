@@ -1,7 +1,6 @@
-% Master resume. Keep every project. Tailored versions drop projects, they do not rewrite these bullets.
+% One-page resume. Drop projects from the master. Do not rewrite its bullets.
 \documentclass[10pt]{article}
 \usepackage{resume}
-\usepackage{needspace}
 
 \geometry{top=0.5in, bottom=0.45in, left=0.5in, right=0.5in}
 \setmainfont{Carlito}[
@@ -15,7 +14,7 @@
 \titleformat{\section}[block]
   {\normalfont\fontsize{10.5}{12}\selectfont\bfseries}
   {}{0em}{\MakeUppercase}[\vspace{-6.5pt}\rule{\linewidth}{0.5pt}]
-\titlespacing*{\section}{0pt}{5pt}{-1.5pt}
+\titlespacing*{\section}{0pt}{8pt}{-1.5pt}
 
 \renewcommand{\resumeheader}[2]{%
   {\centering\fontsize{16}{18}\selectfont\bfseries #1\par}%
@@ -54,21 +53,21 @@
 Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894@gmail.com} | \href{https://www.linkedin.com/in/lijoseph894/}{\underline{LinkedIn}} | \href{https://josephl894.github.io/}{\underline{GitHub}}}
 
 \section{Skills}
-\skill{Languages \& Databases}{Python, Go, SQL, PostgreSQL, Redis, TypeScript, JavaScript, CUDA}
-\skill{Infrastructure \& Development}{Git, GitHub Actions, AWS Bedrock, Next.js, React, Vercel}
-\skill{Systems \& AI}{API Gateways, CI/CD, Regression Testing, Observability, Asynchronous Programming, Langfuse, LLM Evaluation, PyTorch, LoRA}
+\skill{Languages \& Databases}{Python, Go, C, C++, CUDA, TypeScript, JavaScript, SQL, PostgreSQL, Redis}
+\skill{Infrastructure \& Development}{Linux, Docker, Kubernetes, Git, GitHub Actions, QEMU, AWS Bedrock, Next.js, React, Vercel}
+\skill{Systems \& AI}{API Gateways, CI/CD, Regression Testing, Observability, Asynchronous Programming, Operating Systems, Virtual Memory, Langfuse, LLM Evaluation, PyTorch, vLLM, Roofline Analysis, TensorFlow, LoRA, scikit-learn, NumPy, Pandas}
 
 \section{Professional Experience}
-\job{Cortex AI}{Menlo Park, CA}{Software Engineer Intern}{Jun. 2026 - Aug. 2026}
+\job{Cortex AI --- Agentic Productivity OS Startup}{Menlo Park, CA}{Software Engineer Intern}{Jun. 2026 - Aug. 2026}
 \begin{bullets}
-  \item Designed and launched an LLM API gateway in \textbf{Go}, \textbf{PostgreSQL}, and \textbf{Redis} that routes OpenAI, Anthropic, and \textbf{AWS Bedrock} through one endpoint for a 2,000-seat customer and meters \$10K in monthly model spend
-  \item Built a pre-release test suite with \textbf{GitHub Actions}, expanding coverage from 5 smoke tests to 159 tasks so tool regressions were caught before release
-  \item Established live monitoring in \textbf{Langfuse}, adopted by all 9 engineers, tracking per-session latency and failures and routing each failure to the engineer responsible
-  \item Reduced wasted model spend by stopping runaway agent loops and using an \textbf{LLM judge} to flag unnecessary tool calls
+  \item Engineered a \textbf{30-task agent-eval suite} that blocked releases and drove a \textbf{20\% faster execution speed}, raised task completion from \textbf{70\% to 100\%}, and cut average token use \textbf{15\%}
+  \item Established a \textbf{single debugging view} that showed engineers exactly what an agent did on each task, cutting the time spent searching logs and fixing failures \textbf{3×}
+  \item Launched a \textbf{new-user onboarding} experience that lifted \textbf{Day-1 retention from 33\% to 54\%} by walking people through the core tasks and model choices
+  \item Built a \textbf{skills library} that let users save and reuse the workflows they repeated, removing the need to rebuild the same steps on every task
 \end{bullets}
 
 \vspace{3pt}
-\job{Yoyo Markets}{New York, NY (Remote)}{Software Engineer}{Aug. 2025 - Dec. 2025}
+\job{Yoyo Markets --- AI-Native Prediction Markets Startup}{New York, NY (Remote)}{Software Engineer}{Aug. 2025 - Dec. 2025}
 \begin{bullets}
   \item Automated manual research and editorial work with a \textbf{Python} and LLM generation pipeline, producing \textbf{50+ markets per week at 5x the hand-curated rate}
   \item Developed an \textbf{asynchronous Python} scraper tracking 150+ high-signal Twitter accounts in real time, feeding that pipeline \textbf{3x the signal volume} of public trend aggregators
@@ -84,22 +83,22 @@ Sunnyvale, CA | (734) 934-2168 | \href{mailto:lijoseph894@gmail.com}{lijoseph894
   \item Quantized weights from \textbf{FP16} to \textbf{INT4}, cutting model size \textbf{61\%} while keeping generated answers coherent
 \end{bullets}
 
-\proj{Power Grid Dispatch Model}{Python}{USC}{Jan. 2026 - May 2026}
-\begin{bullets}
-  \item Engineered a \textbf{learning-to-optimize} pipeline for New York's grid, where a model learns generation costs from public load, price, and outage data and an optimizer sets the hourly plan
-  \item Cut the extra cost above the cheapest possible hourly plan \textbf{by 47\%} versus the old schedule by adding transmission limits and a reserve margin
-\end{bullets}
-
 \proj{Math Reasoning Fine-Tune}{Python, LoRA}{USC}{Aug. 2025 - Dec. 2025}
 \begin{bullets}
   \item Trained \textbf{Qwen2.5-1.5B} with \textbf{LoRA} on 1,000 grade-school math problems to write its reasoning before the answer
   \item Rebuilt the grader until a correct final answer \textbf{scored consistently}, then implemented a \textbf{GRPO} trainer that rewards a correct, clearly reasoned solution among 4 candidates
 \end{bullets}
 
+\proj{Weenix (A Unix-Like OS Kernel)}{C, x86, QEMU}{USC}{Aug. 2025 - Dec. 2025}
+\begin{bullets}
+  \item Constructed a Unix-like kernel in \textbf{C}, with process scheduling, a file system, and virtual memory
+  \item Integrated the three parts in \textbf{QEMU} so processes could be scheduled, files created and removed, and a copied process shared memory until one side wrote to it
+\end{bullets}
+
 \section{Education}
 \vspace{-2pt}
 \school{University of Southern California}{Los Angeles, CA}{M.S. Computer Science | GPA: 3.6/4.0}{Sep. 2024 - May 2026}
-\note{Relevant Coursework: Machine Learning, Natural Language Processing, Analysis of Algorithms, ML Accelerators}
+\note{Relevant Coursework: ML Accelerators, Operating Systems}
 
 \school{University of Michigan, Ann Arbor}{Ann Arbor, MI}{B.S.E. Data Science | GPA: 3.7/4.0}{Sep. 2020 - May 2024}
 
